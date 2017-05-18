@@ -1,0 +1,5 @@
+<section {{ if .Get "data-background-color" }}data-background-color="{{ .Get "data-background-color" }}"{{ end }}
+{{ if .Get "data-background-image" }}data-background-image="{{ .Get "data-background-image" }}"{{ end }}
+>
+    {{ .Inner }}
+</section>
