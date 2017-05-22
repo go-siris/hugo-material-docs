@@ -13,27 +13,13 @@
 
     {{ with .Site.Social.twitter }}
     <div class="button button-twitter" role="button" aria-label="Twitter">
-       <a href="https://twitter.com/{{ . }}" title="@{{ . }} on Twitter" target="_blank" rel="noopener" class="toggle-button icon"><i class="fa fa-twitter"></i></a>
+       <a href="https://twitter.com/{{ . }}" title="@{{ . }} on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
     </div>
     {{ end }}
-    {{ with .Site.Social.linkedin }}
-    <div class="button button-linkedin" role="button" aria-label="Linkedin">
-      <a href="https://linkedin.com/in/{{ . }}" title="@{{ . }} on Linkedin" target="_blank" rel="noopener" class="toggle-button icon "><i class="fa fa-linkedin-square"></i></a>
-    </div>
-    {{ end }}
-    {{ with .Site.Social.instagram }}
-    <div class="button button-instagram" role="button" aria-label="Instagram">
-      <a href="https://instagram.com/{{ . }}" title="@{{ . }} on Instagram" target="_blank"  rel="noopener" class="toggle-button icon "><i class="fa fa-instagram"></i></a>
-    </div>
-    {{ end }}
-    {{ with .Site.Social.facebook }}
-    <div class="button button-facebook" role="button" aria-label="Facebook">
-      <a href="https://facebook.com/{{ . }}" title="@{{ . }} on Facebook" target="_blank" rel="noopener" class="toggle-button icon "><i class="fa fa-facebook"></i></a>
-    </div>
-    {{ end }}
+
     {{ with .Site.Social.github }}
     <div class="button button-github" role="button" aria-label="GitHub">
-      <a href="https://github.com/{{ . }}" title="@{{ . }} on GitHub" target="_blank" rel="noopener" class="toggle-button icon"><i class="fa fa-github"></i></a>
+      <a href="https://github.com/{{ . }}" title="@{{ . }} on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
     </div>
     {{ end }}
     
