@@ -1,9 +1,44 @@
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
+@import "components/color";
 
-main {
-  flex: 2 0 auto;
+@each $color_name, $color in $colors {
+  @each $color_type, $color_value in $color {
+    @if $color_type == "base" {
+      @supports (-webkit-appearance:none) {
+        body.primary-#{$color_name} {
+          background: $color_value !important;
+        }
+      }
+      body.primary-#{$color_name} {
+        footer, header {
+          background-color: $color_value !important;
+        }
+      }
+      body.primary-#{$color_name}-text {
+        color: $color_value !important;
+      }
+      body.accent-#{$color_name} {
+        background-color: $color_value !important;
+      }
+      body.accent-#{$color_name}-text {
+        color: $color_value !important;
+      }
+    } @else if $color_name != "shades" {
+      @supports (-webkit-appearance:none) {
+        body.primary-#{$color_name}-#{$color_type} {
+          background: $color_value !important;
+        }
+      }
+      body.primary-#{$color_name}-#{$color_type} {
+        footer, header {
+          background-color: $color_value !important;
+          nav {
+            background-color: $color_value !important;
+          }
+        }
+      }
+      body.primary-#{$color_name}-text.text-#{$color_type} {
+        color: $color_value !important;
+      }
+    }
+  }
 }
