@@ -1,6 +1,15 @@
 <nav aria-label="Navigation">
+
     <div class="scrollable">
         <div class="wrapper">
+            {{ if .IsPage }}
+            <h3>Tabe of content</h3>
+            <div id="toc" class="well col-md-4 col-sm-6">
+                {{ .TableOfContents }}
+            </div>
+            {{ end }}
+            <hr>
+            <h3>Menu</h3>
             <div class="toc">
                 {{ if gt (len .Site.Menus.main) 0 }}
                 <ul>
@@ -8,6 +17,31 @@
                 </ul>
                 {{ end }}
             </div>
+
+            <ul class="sidebar-menu toc">
+                {{ $currentPage := . }}
+                {{ range .Site.Menus.main }}
+                    {{ if .HasChildren }}
+                    <li class="sub-menu{{if $currentPage.HasMenuCurrent " main " . }} current{{end}}">
+                    <a href="{{.URL}}" class="{{if $currentPage.HasMenuCurrent "main" . }} current{{end}}">
+                        {{ .Pre }}<span>{{ .Name }}</span>
+                    </a>
+                    <ul class="sub">
+                        {{ range .Children }}
+                        <li
+                        {{if $currentPage.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{.URL}}"> {{ .Name }} </a> </li>
+                        {{ end }}
+                    </ul>
+                    {{else}}
+                    <li>
+                        <a href="{{.URL}}">
+                            {{ .Pre }}<span>{{ .Name }}</span>
+                        </a>
+                    {{end}}
+                </li>
+                {{end}}
+            </ul>
         </div>
     </div>
+
 </nav>

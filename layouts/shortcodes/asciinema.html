@@ -1,9 +1,6 @@
+{{ .Inner }}
 {{ if .IsNamedParams }}
-<div class="{{ if .Get "class" }}{{ .Get "class" }}{{ else }}vimeo-container{{ end }}">
-<iframe src="//player.vimeo.com/video/{{ .Get "id" }}" allowfullscreen></iframe>
-</div>
+    <script type="text/javascript" src="https://asciinema.org/a/{{ .Get "id" }}" id="asciicast-{{ .Get "id" }}" async></script>
 {{ else }}
-<div class="{{ if len .Params | eq 2 }}{{ .Get 1 }}{{ else }}vimeo-container{{ end }}">
-    <iframe src="//player.vimeo.com/video/{{ .Get 0 }}" allowfullscreen></iframe>
-</div>
+    <script type="text/javascript" src="https://asciinema.org/a/{{ .Get 0 }}.js" id="asciicast-{{ .Get 0 }}" async></script>
 {{ end }}

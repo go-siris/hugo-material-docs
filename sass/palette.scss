@@ -4,7 +4,7 @@
   @each $color_type, $color_value in $color {
     @if $color_type == "base" {
       @supports (-webkit-appearance:none) {
-        body.palette-primary-#{$color_name} {
+        .palette-primary-#{$color_name} {
           background: $color_value
         }
       }
@@ -13,25 +13,16 @@
         .footer, .header {
           background: $color_value;
         }
-        .drawer {
-          .toc {
-            a.current, a:focus, a:hover {
-              color: $color_value;
-            }
-            .anchor a {
-              border-left: 2px solid $color_value;
-            }
-          }
-        }
+
         .article {
-          a, code, h1, h2 {
+          code {
             color: $color_value;
           }
           .headerlink {
             color: rgba(0, 0, 0, .26)
           }
           table th {
-            background: #ee7a70
+            background: lighten($color_value, 20)
           }
         }
         .results .meta {
@@ -43,29 +34,14 @@
         background: -webkit-linear-gradient(top, #fff 50%, $color_value 0);
         background: linear-gradient(180deg, #fff 50%, $color_value 0)
       }
-
-      body.palette-accent-#{$color_name} {
+      body.palette-accent-#{$color_name}-#{$color_type} {
         .article {
           a:focus, a:hover {
             color: $color_value;
           }
         }
-      }
-
-      body.palette-accent-#{$color_name} .repo a {
-        background: $color_value;
-      }
-
-    } @else if $color_name != "shades" {
-      @supports (-webkit-appearance:none) {
-        .palette-primary-#{$color_name}-#{$color_type} {
-          background: $color_value
-        }
-      }
-
-      body.palette-primary-#{$color_name}-#{$color_type} {
-        .footer, .header {
-          background: $color_value;
+        a:focus, a:hover {
+          color: $color_value;
         }
         .drawer {
           .toc {
@@ -78,8 +54,35 @@
             }
           }
         }
+      }
+
+      .palette-accent-#{$color_name}-#{$color_type} .repo a {
+        background: $color_value;
+      }
+      body.palette-title-#{$color_name}-#{$color_type} {
+        h1, h2, h3, h4, h5, h6 {
+          color: $color_value;
+        }
+      }
+      body.palette-link-#{$color_name}-#{$color_type} {
+        .article a {
+          color: $color_value;
+        }
+      }
+    } @else if $color_name != "shades" {
+      @supports (-webkit-appearance:none) {
+        .palette-primary-#{$color_name}-#{$color_type} {
+          background: $color_value
+        }
+      }
+
+      body.palette-primary-#{$color_name}-#{$color_type} {
+        .footer, .header {
+          background: $color_value;
+        }
+
         .article {
-          a, code, h1, h2 {
+          code {
             color: $color_value;
           }
           .headerlink {
@@ -98,7 +101,7 @@
         background: -webkit-linear-gradient(top, #fff 50%, $color_value 0);
         background: linear-gradient(180deg, #fff 50%, $color_value 0)
       }
-      .palette-accent-#{$color_name}-#{$color_type} {
+      body.palette-accent-#{$color_name}-#{$color_type} {
         .article {
           a:focus, a:hover {
             color: $color_value;
@@ -107,10 +110,31 @@
         a:focus, a:hover {
           color: $color_value;
         }
+        .drawer {
+          .toc {
+            a.current, a:focus, a:hover {
+              color: $color_value;
+
+            }
+            .anchor a {
+              border-left: 2px solid $color_value;
+            }
+          }
+        }
       }
 
       .palette-accent-#{$color_name}-#{$color_type} .repo a {
         background: $color_value;
+      }
+      body.palette-title-#{$color_name}-#{$color_type} {
+        h1, h2, h3, h4, h5, h6 {
+          color: $color_value;
+        }
+      }
+      body.palette-link-#{$color_name}-#{$color_type} {
+        .article a {
+          color: $color_value;
+        }
       }
     }
   }
