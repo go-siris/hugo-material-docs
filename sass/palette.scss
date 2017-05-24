@@ -34,7 +34,7 @@
         background: -webkit-linear-gradient(top, #fff 50%, $color_value 0);
         background: linear-gradient(180deg, #fff 50%, $color_value 0)
       }
-      body.palette-accent-#{$color_name}-#{$color_type} {
+      body.palette-accent-#{$color_name} {
         .article {
           a:focus, a:hover {
             color: $color_value;
@@ -56,15 +56,15 @@
         }
       }
 
-      .palette-accent-#{$color_name}-#{$color_type} .repo a {
+      body.palette-accent-#{$color_name} .repo a {
         background: $color_value;
       }
-      body.palette-title-#{$color_name}-#{$color_type} {
+      body.palette-title-#{$color_name} {
         h1, h2, h3, h4, h5, h6 {
           color: $color_value;
         }
       }
-      body.palette-link-#{$color_name}-#{$color_type} {
+      body.palette-link-#{$color_name} {
         .article a {
           color: $color_value;
         }
@@ -123,7 +123,7 @@
         }
       }
 
-      .palette-accent-#{$color_name}-#{$color_type} .repo a {
+      body.palette-accent-#{$color_name}-#{$color_type} .repo a {
         background: $color_value;
       }
       body.palette-title-#{$color_name}-#{$color_type} {

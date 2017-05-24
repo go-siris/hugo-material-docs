@@ -1,57 +1,26 @@
-{{ partial "head" . }}
+{{ define "main" }}
 
-<div class="backdrop">
-	<div class="backdrop-paper"></div>
+<h1>{{ .Title }}</h1>
+<div class="row">
+    {{ range .Data.Pages }}
+    <div class="col s12 m7">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="http://lorempixel.com/100/190/nature/6">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h2><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h2>
+
+                    {{ printf "%s" .Summary | markdownify }}
+                </div>
+                <div class="card-action">
+                    <a href="{{ .Permalink }}" title="{{ .Title }}">See more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
 </div>
+{{ end }}
 
-<input class="toggle" type="checkbox" id="toggle-drawer">
-<input class="toggle" type="checkbox" id="toggle-search">
-<label class="toggle-button overlay" for="toggle-drawer"></label>
-
-<header class="header">
-	{{ partial "header" . }}
-</header>
-
-<main class="main">
-	<div class="drawer">
-		{{ partial "drawer" . }}
-	</div>
-
-	<article class="article">
-		<div class="wrapper">
-			<h1>{{ .Title | pluralize }}</h1>
-
-			{{ range .Data.Pages }}
-			<a href="{{ .Permalink }}" title="{{ .Title }}">
-				<h2>{{ .Title }}</h2>
-			</a>
-
-			<br>
-			{{ printf "%s" .Summary | markdownify }}
-
-			<hr>
-			{{ end }}
-
-			<aside class="copyright" role="note">
-				{{ with .Site.Params.copyright }}
-				&copy; {{ now.Format "2006" }} {{ . }} &ndash;
-				{{ end }}
-				Documentation built with
-				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
-				using the
-				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
-			</aside>
-		</div>
-	</article>
-
-	<div class="results" role="status" aria-live="polite">
-		<div class="scrollable">
-			<div class="wrapper">
-				<div class="meta"></div>
-				<div class="list"></div>
-			</div>
-		</div>
-	</div>
-</main>
-
-{{ partial "footer_js" . }}
