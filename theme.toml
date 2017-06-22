@@ -8,8 +8,8 @@ features = []
 min_version = 0.20
 
 [author]
-  name = "Digitalcraftsman"
-  homepage = "https://github.com/digitalcraftsman"
+  name = "blackreaven"
+  homepage = "https://github.com/blackreaven"
 
 # If porting an existing theme
 [original]

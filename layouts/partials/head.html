@@ -49,19 +49,27 @@
 
     <link rel="stylesheet" href="{{ "stylesheets/application.css" | absURL }}">
     <link rel="stylesheet" href="{{ "stylesheets/temporary.css" | absURL }}">
-    <link rel="stylesheet" href="{{ "stylesheets/palettes.css" | absURL }}">
-    <link rel="stylesheet" href="{{ with .Site.Params.highlight_css }}{{ . | absURL }}{{ else }}{{ "stylesheets/highlight/highlight.css" | absURL }}{{ end }}">
-
+    <link rel="stylesheet" href="{{ "css/palette.css" | absURL }}">
+    <link rel="stylesheet" href="{{ "lib/font-awesome/css/font-awesome.min.css" | absURL }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/{{ with .Site.Params.highlight_theme }}{{ . }}{{ else }}default{{ end }}.min.css">
     {{/* set default values if no custom ones are defined */}}
     {{ $text := or .Site.Params.font.text "Roboto" }}
     {{ $code := or .Site.Params.font.code "Roboto Mono" }}
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ $text }}:400,700|{{ replace  $code " " "+" | safeURL }}">
+    {{ $title := or .Site.Params.font.title "Roboto" }}
+    {{ $menu := or .Site.Params.font.menu "Roboto" }}
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ $text }}:400,700|{{ replace  $code " " "+" | safeURL }}|{{ replace  $title " " "+" | safeURL }}">
     <style>
       body, input {
         font-family: '{{ $text }}', Helvetica, Arial, sans-serif;
       }
       pre, code {
         font-family: '{{ $code }}', 'Courier New', 'Courier', monospace;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: '{{ $title }}', Helvetica, Arial, sans-serif;
+      }
+      .toc a {
+        font-family: '{{ $title }}', Helvetica, Arial, sans-serif;
       }
     </style>
 
@@ -76,4 +84,4 @@
     {{ end }}
 
   </head>
-  <body class="{{ with .Site.Params.palette.primary }}palette-primary-{{ . }}{{end }} {{ with .Site.Params.palette.accent }}palette-accent-{{ .  }}{{ end }}">
+  <body class="{{ with .Site.Params.palette.primary }}palette-primary-{{ . }}{{ end }}{{ with .Site.Params.palette.primarytype }}-{{ . }}{{end }} {{ with .Site.Params.palette.accent }}palette-accent-{{ .  }}{{ end }}{{ with .Site.Params.palette.accenttype }}-{{ . }}{{ end }} {{ with .Site.Params.palette.title }}palette-title-{{ .  }}{{ end }}{{ with .Site.Params.palette.titletype }}-{{ . }}{{ end }} {{ with .Site.Params.palette.link }}palette-link-{{ .  }}{{ end }}{{ with .Site.Params.palette.linktype }}-{{ . }}{{ end }}">

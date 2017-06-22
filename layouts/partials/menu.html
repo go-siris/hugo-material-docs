@@ -1,0 +1,22 @@
+<div class="toc">
+    <ul>
+        <!-- Menu items sorted alphabetically by name -->
+        {{ $page := . }}
+        {{ $site := .Site }}
+        {{ range .Site.Menus.main }}
+            {{ $is := $page.IsMenuCurrent "main" . }}
+            {{ $has := $page.HasMenuCurrent "main" . }}
+            <li>
+                <span>
+                    <a href="{{ .URL }}" class="anchor {{ if $is }} current{{ end }}{{ if $has }} parent-active{{ end }}">{{ .Pre }} {{ .Name }}</a>
+                </span>
+                <!-- Show a » symbol if there is a sub-menu we haven't rendered -->
+                {{ if .HasChildren }}
+                {{ if or $is $has }}
+                {{ partial "menu_item.html" (dict "menu" .Children "page" $page "site" $site) }}
+                {{ end }}
+                {{ end }}
+            </li>
+        {{end}}
+    </ul>
+</div>
